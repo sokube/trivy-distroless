@@ -20,7 +20,6 @@ RUN CGO_ENABLED=0 GOOS=${OS} GOARCH=${ARCH} go build -a -installsuffix cgo -ldfl
 FROM scratch
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /go/bin/trivy /go/bin/trivy
-COPY --from=builder --chown=1001:0 /tmp/trivy/ /tmp/trivy/
 
 USER 1001
 ENTRYPOINT ["/go/bin/trivy"]
