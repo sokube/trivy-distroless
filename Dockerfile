@@ -14,8 +14,8 @@ RUN dnf install -y ca-certificates git \
 
 FROM golang:1.15.6 as builder
 COPY --from=source /trivy /tmp/trivy
+WORKDIR /.cache/trivy
 WORKDIR /tmp/trivy/cmd/trivy
-RUN mkdir -p /.cache/trivy
 RUN CGO_ENABLED=0 GOOS=${OS} GOARCH=${ARCH} go build -a -installsuffix cgo -ldflags="-w -s" -o /go/bin/trivy
 
 FROM scratch
