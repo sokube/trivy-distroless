@@ -3,4 +3,4 @@
 - 9a1ac998567d
 - 26.5MB
 
-docker run -it distroless-trivy:v0.0.4 --cache-dir /tmp/trivy image nginx:latest
+docker run -it distroless-trivy:v0.0.4 image nginx:latest
